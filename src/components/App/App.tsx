@@ -1,13 +1,13 @@
 import css from './App.module.css';
-import CafeMarkUp from '../CafeInfo/CafeInfo';
+import CafeInfo from '../CafeInfo/CafeInfo';
 import { type Votes, type VoteType } from '../../types/votes';
-import VoteSection from '../VoteOptions/VoteOptions';
+import VoteOption from '../VoteOptions/VoteOptions';
 import { useState } from "react";
-import TableVotes from '../VoteStats/VoteStatus';
-import Notify from '../Notification/Notification';
+import VoteStats from '../VoteStats/VoteStats';
+import Notification from '../Notification/Notification';
 
 
-export default function AppMain(){
+export default function App(){
 
     const [votes, setVotes] = useState<Votes>({
         good: 0,
@@ -32,18 +32,18 @@ const total:number = (votes.bad + votes.good + votes.neutral);
 
     return(
         <div className={css.app}>
-            <CafeMarkUp />
-            <VoteSection onVote={handleVote} onReset={resetVotes} canReset={total
+            <CafeInfo />
+            <VoteOption onVote={handleVote} onReset={resetVotes} canReset={total
                                                                             ? total >= 1
                                                                             : false
             }/>
             
             {total >= 1
-            ? <TableVotes votes={votes} totalVotes={total} positiveRate={total
+            ? <VoteStats votes={votes} totalVotes={total} positiveRate={total
                                                                             ? Math.round((votes.good / total * 100))
                                                                             :0   
             }/>
-            : <Notify />
+            : <Notification />
             }
             
         </div>
