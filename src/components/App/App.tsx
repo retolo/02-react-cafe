@@ -3,7 +3,7 @@ import CafeMarkUp from '../CafeInfo/CafeInfo';
 import { type Votes, type VoteType } from '../../types/votes';
 import VoteSection from '../VoteOptions/VoteOptions';
 import { useState } from "react";
-import TableVotes from '../VoteStatsComponent/VoteStatus';
+import TableVotes from '../VoteStats/VoteStatus';
 import Notify from '../Notification/Notification';
 
 
